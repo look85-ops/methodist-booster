@@ -101,11 +101,6 @@ h1 {
 }
 .sign-prediction p { margin-bottom: 6px; }
 .sign-prediction p:last-child { margin-bottom: 0; }
-.sign-meta {
-  margin-top: 8px; padding-top: 8px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  display: flex; gap: 12px; font-size: 12px; color: rgba(240, 234, 224, 0.4);
-}
 .before-7am {
   text-align: center; padding: 20px;
 }
@@ -146,8 +141,6 @@ footer p {
   </div>
 
   <div class="signs-grid" id="signsGrid"></div>
-
-
 
   <footer>
     <p>* Гороскоп не является официальным документом<br>и не может быть использован в суде</p>
@@ -276,29 +269,8 @@ footer p {
     { name: "Рыбы", dates: "19 фев — 20 мар", emoji: "♓" }
   ];
 
-  const moods = [
-    "Бодрый как эспрессо", "Спокойный как воскресенье",
-    "Деловой как план", "Вдохновлённый как после кино",
-    "Уверенный как код без ошибок", "Расслабленный как пятница",
-    "Сосредоточенный как перед дедлайном", "Весёлый как переписка с другом",
-    "Философский как после умной статьи", "Энергичный как любимый плейлист"
-  ];
-
-  const numbers = [
-    "42", "404", "200", "7", "13", "100", "0", "3.14", "256", "1024",
-    "88", "∞", "123", "007", "99", "50", "365", "24/7", "10x", "8"
-  ];
-
-  // ---- shuffle predictions & assign to signs ----
+  // ---- shuffle predictions (fallback) ----
   const shuffled = shuffle([...predictions], rng(daySeed + 42));
-  function signPrediction(signIdx) {
-    const pred = shuffled[signIdx % shuffled.length];
-    const s = hashDate(seedDate + signIdx);
-    const r = rng(s);
-    const mood = pick(moods, r);
-    const num = pick(numbers, r);
-    return { body: pred.body, twist: pred.twist, advice: pred.advice, mood, num };
-  }
 
   // ---- rendering ----
   const dayNames = ["воскресенье", "понедельник", "вторник", "среда", "четверг", "пятница", "суббота"];
@@ -307,34 +279,17 @@ footer p {
   document.getElementById('dateDisplay').innerHTML =
     `<span>📅 ${displayDate.getDate()} ${monthNames[displayDate.getMonth()]}, ${dayNames[displayDate.getDay()]}</span>`;
 
-  if (isBefore7) {
-    document.getElementById('updateTime').innerHTML =
-      `<span>⏰ Сегодняшний гороскоп выйдет в 07:00</span>`;
+  function renderIntro(vibeText) {
     document.getElementById('introCard').classList.remove('loading');
     document.getElementById('introCard').classList.add('visible');
-    document.getElementById('introText').innerHTML = `
-      <div class="before-7am">
-        <div class="emoji-big">🌙</div>
-        <h2>Гороскоп ещё готовится</h2>
-        <p>Звёзды ещё не проснулись. Загляни после 07:00.</p>
-        <p style="margin-top:12px;font-size:13px">А пока — держи вчерашний, чтобы точно знать, что день был хорошим:</p>
-      </div>
-    `;
-    document.getElementById('signsGrid').innerHTML = '';
+    document.getElementById('introText').innerHTML = `<p>${vibeText}</p>`;
   }
 
-  const vibe = pick(vibes, rand);
-
-  if (!isBefore7) {
-    document.getElementById('updateTime').innerHTML = `<span>☀️ Обновлено сегодня в 07:00</span>`;
-    document.getElementById('introCard').classList.remove('loading');
-    document.getElementById('introCard').classList.add('visible');
-    document.getElementById('introText').innerHTML = `<p>${vibe}</p>`;
-
+  function renderSigns(preds) {
     let html = '';
     for (let i = 0; i < signsData.length; i++) {
       const s = signsData[i];
-      const p = signPrediction(i);
+      const p = preds[i] || shuffled[i % shuffled.length];
       html += `
         <div class="sign-card">
           <div class="sign-header">
@@ -347,14 +302,36 @@ footer p {
             <p>✨ ${p.twist}</p>
             <p>💡 ${p.advice}</p>
           </div>
-          <div class="sign-meta">
-            <span>🎯 Настроение: ${p.mood}</span>
-            <span>🔢 Счастливое число: ${p.num}</span>
-          </div>
         </div>
       `;
     }
     document.getElementById('signsGrid').innerHTML = html;
+  }
+
+  if (isBefore7) {
+    document.getElementById('updateTime').innerHTML =
+      `<span>⏰ Сегодняшний гороскоп выйдет в 07:00</span>`;
+    renderIntro('🌙 <span class=accent>Гороскоп ещё готовится.</span> Загляни после 07:00.');
+    renderSigns(shuffled);
+  } else {
+    document.getElementById('updateTime').innerHTML = `<span>☀️ Обновлено сегодня в 07:00</span>`;
+
+    (async function loadData() {
+      try {
+        const resp = await fetch('data.json?' + seedDate);
+        if (resp.ok) {
+          const data = await resp.json();
+          if (data.date === seedDate && data.predictions && data.predictions.length === 12) {
+            renderIntro(data.vibe || pick(vibes, rand));
+            renderSigns(data.predictions);
+            return;
+          }
+        }
+      } catch(e) {}
+      // fallback
+      renderIntro(pick(vibes, rand));
+      renderSigns(shuffled);
+    })();
   }
 
   // ---- stars ----
