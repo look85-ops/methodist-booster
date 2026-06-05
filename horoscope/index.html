@@ -16,23 +16,14 @@ body {
   padding: 20px;
   color: #f0eae0;
 }
-.container {
-  max-width: 720px;
-  width: 100%;
-  position: relative;
-}
+.container { max-width: 820px; width: 100%; position: relative; }
 .stars {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 0;
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none; overflow: hidden; z-index: 0;
 }
 .star {
-  position: absolute;
-  width: 2px; height: 2px;
-  background: #fff;
-  border-radius: 50%;
+  position: absolute; width: 2px; height: 2px;
+  background: #fff; border-radius: 50%;
   animation: twinkle var(--d) ease-in-out infinite alternate;
 }
 @keyframes twinkle {
@@ -40,204 +31,117 @@ body {
   100% { opacity: 1; transform: scale(1.2); }
 }
 header {
-  text-align: center;
-  margin-bottom: 32px;
-  position: relative;
-  z-index: 1;
+  text-align: center; margin-bottom: 28px; position: relative; z-index: 1;
 }
 .badge {
   display: inline-block;
   background: rgba(240, 165, 0, 0.15);
   border: 1px solid rgba(240, 165, 0, 0.3);
-  color: #f0a500;
-  padding: 4px 14px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-bottom: 16px;
+  color: #f0a500; padding: 4px 14px; border-radius: 20px;
+  font-size: 12px; font-weight: 600; letter-spacing: 1px;
+  text-transform: uppercase; margin-bottom: 14px;
 }
 h1 {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 48px;
-  font-weight: 400;
-  color: #fff;
-  letter-spacing: -1px;
-  margin-bottom: 8px;
+  font-size: 44px; font-weight: 400; color: #fff;
+  letter-spacing: -1px; margin-bottom: 8px;
   text-shadow: 0 2px 20px rgba(240,165,0,0.15);
 }
-.subtitle {
-  font-size: 14px;
-  color: rgba(240, 234, 224, 0.5);
-  font-style: italic;
-  margin-bottom: 16px;
-}
 .meta {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  font-size: 13px;
-  color: rgba(240, 234, 224, 0.6);
+  display: flex; justify-content: center; gap: 20px;
+  font-size: 13px; color: rgba(240, 234, 224, 0.6);
 }
 .meta span { display: flex; align-items: center; gap: 6px; }
-.card {
-  position: relative;
-  z-index: 1;
+.intro-card {
+  position: relative; z-index: 1;
   background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  padding: 40px;
-  margin-bottom: 20px;
+  border-radius: 18px; padding: 28px; margin-bottom: 24px;
+  text-align: center;
   transition: opacity 0.6s ease;
 }
-.card.loading {
-  opacity: 0;
-}
-.card.visible {
-  opacity: 1;
-}
-.horoscope-text {
-  font-size: 18px;
-  line-height: 1.7;
+.intro-card.loading { opacity: 0; }
+.intro-card.visible { opacity: 1; }
+.intro-text {
+  font-family: Georgia, serif; font-size: 20px; line-height: 1.6;
   color: rgba(240, 234, 224, 0.9);
 }
-.horoscope-text p { margin-bottom: 16px; }
-.horoscope-text p:last-child { margin-bottom: 0; }
-.horoscope-text .intro {
-  font-size: 20px;
-  font-weight: 600;
-  color: #f0a500;
-  font-family: Georgia, serif;
-}
-.horoscope-text .highlight {
-  background: linear-gradient(120deg, rgba(240,165,0,0.15) 0%, rgba(240,165,0,0.05) 100%);
-  padding: 2px 8px;
-  border-radius: 4px;
-}
-.sign-day {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  background: linear-gradient(135deg, rgba(240,165,0,0.08) 0%, transparent 100%);
-  border: 1px solid rgba(240,165,0,0.12);
-  border-radius: 16px;
-  padding: 20px 24px;
-  margin-bottom: 20px;
-}
-.sign-icon {
-  font-size: 36px;
-  line-height: 1;
-  flex-shrink: 0;
-}
-.sign-info h3 {
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: rgba(240, 234, 224, 0.4);
-  margin-bottom: 4px;
-}
-.sign-info p {
-  font-size: 16px;
-  color: rgba(240, 234, 224, 0.85);
-}
-.sign-info strong {
-  color: #f0a500;
-}
-.extra-grid {
-  position: relative;
-  z-index: 1;
+.intro-text .accent { color: #f0a500; }
+.signs-grid {
+  position: relative; z-index: 1;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
-.extra-item {
+.sign-card {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 14px;
-  padding: 16px;
-  text-align: center;
+  border-radius: 14px; padding: 16px;
+  transition: all 0.2s ease;
 }
-.extra-label {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: rgba(240, 234, 224, 0.35);
-  margin-bottom: 6px;
+.sign-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(240, 165, 0, 0.2);
 }
-.extra-value {
-  font-size: 15px;
-  font-weight: 600;
-  color: #f0eae0;
+.sign-header {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
 }
-.extra-value .gold {
-  font-size: 22px;
-  font-weight: 700;
-  color: #f0a500;
+.sign-emoji { font-size: 26px; line-height: 1; }
+.sign-name {
+  font-weight: 700; font-size: 15px; color: #f0a500;
+}
+.sign-dates {
+  font-size: 11px; color: rgba(240, 234, 224, 0.35); margin-left: auto;
+}
+.sign-prediction {
+  font-size: 14px; line-height: 1.5;
+  color: rgba(240, 234, 224, 0.8);
+}
+.sign-prediction p { margin-bottom: 6px; }
+.sign-prediction p:last-child { margin-bottom: 0; }
+.sign-meta {
+  margin-top: 8px; padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex; gap: 12px; font-size: 12px; color: rgba(240, 234, 224, 0.4);
 }
 .before-7am {
-  text-align: center;
-  padding: 20px;
+  text-align: center; padding: 20px;
 }
-.before-7am .emoji-big {
-  font-size: 56px;
-  margin-bottom: 16px;
-}
+.before-7am .emoji-big { font-size: 56px; margin-bottom: 16px; }
 .before-7am h2 {
-  font-family: Georgia, serif;
-  font-size: 24px;
-  color: #fff;
-  margin-bottom: 8px;
+  font-family: Georgia, serif; font-size: 24px; color: #fff; margin-bottom: 8px;
 }
-.before-7am p {
-  color: rgba(240, 234, 224, 0.6);
-  font-size: 15px;
-}
+.before-7am p { color: rgba(240, 234, 224, 0.6); font-size: 15px; }
 footer {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  padding-top: 12px;
+  position: relative; z-index: 1; text-align: center; padding-top: 8px;
 }
 footer p {
-  font-size: 12px;
-  color: rgba(240, 234, 224, 0.3);
-  line-height: 1.6;
+  font-size: 12px; color: rgba(240, 234, 224, 0.3); line-height: 1.6;
 }
 .share-btn {
-  position: relative;
-  z-index: 1;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  position: relative; z-index: 1;
+  display: inline-flex; align-items: center; gap: 8px;
   margin-top: 16px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: rgba(240, 234, 224, 0.6);
-  padding: 10px 24px;
-  border-radius: 30px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-family: inherit;
+  padding: 10px 24px; border-radius: 30px;
+  font-size: 14px; cursor: pointer;
+  transition: all 0.2s ease; font-family: inherit;
 }
 .share-btn:hover {
   background: rgba(240, 165, 0, 0.15);
   border-color: rgba(240, 165, 0, 0.3);
   color: #f0a500;
 }
-@media (max-width: 600px) {
-  h1 { font-size: 32px; }
-  .card { padding: 24px; }
-  .horoscope-text { font-size: 16px; }
-  .horoscope-text .intro { font-size: 18px; }
-  .extra-grid { grid-template-columns: 1fr 1fr; }
+@media (max-width: 640px) {
+  h1 { font-size: 30px; }
+  .signs-grid { grid-template-columns: 1fr; }
   .meta { flex-direction: column; gap: 4px; }
+  .intro-card { padding: 20px; }
+  .intro-text { font-size: 17px; }
 }
 </style>
 </head>
@@ -247,41 +151,21 @@ footer p {
   <header>
     <div class="badge">☕ Утренний ритуал</div>
     <h1>Гороскоп дня</h1>
-    <p class="subtitle">Бесплатно. Из метро. Для своих.</p>
     <div class="meta">
       <span id="dateDisplay"></span>
       <span id="updateTime"></span>
     </div>
   </header>
 
-  <div class="card loading" id="mainCard">
-    <div class="horoscope-text" id="horoscopeText"></div>
+  <div class="intro-card loading" id="introCard">
+    <div class="intro-text" id="introText"></div>
   </div>
 
-  <div class="sign-day" id="signDay" style="display:none">
-    <div class="sign-icon" id="signIcon"></div>
-    <div class="sign-info">
-      <h3>Знак дня</h3>
-      <p id="signText"></p>
-    </div>
-  </div>
+  <div class="signs-grid" id="signsGrid"></div>
 
-  <div class="extra-grid" id="extraGrid" style="display:none">
-    <div class="extra-item">
-      <div class="extra-label">Настроение</div>
-      <div class="extra-value" id="moodValue"></div>
-    </div>
-    <div class="extra-item">
-      <div class="extra-label">Счастливое число</div>
-      <div class="extra-value"><span class="gold" id="numberValue"></span></div>
-    </div>
-    <div class="extra-item">
-      <div class="extra-label">Кофе дня</div>
-      <div class="extra-value" id="coffeeValue"></div>
-    </div>
+  <div style="text-align:center;position:relative;z-index:1">
+    <button class="share-btn" id="shareBtn">Поделиться с коллегами</button>
   </div>
-
-  <button class="share-btn" id="shareBtn">Поделиться с коллегами</button>
 
   <footer>
     <p>* Гороскоп не является официальным документом<br>и не может быть использован в суде</p>
@@ -291,7 +175,6 @@ footer p {
 
 <script>
 (function() {
-  // ---- seeded PRNG ----
   function hashDate(s) {
     let h = 0;
     for (let i = 0; i < s.length; i++) { h = ((h << 5) - h) + s.charCodeAt(i); h |= 0; }
@@ -301,126 +184,90 @@ footer p {
     let s = seed;
     return function() { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; };
   }
-  function pick(arr, rand) { return arr[Math.floor(rand() * arr.length)]; }
+  function pick(arr, r) { return arr[Math.floor(r() * arr.length)]; }
+  function shuffle(arr, r) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(r() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
 
-  // ---- date logic ----
   const now = new Date();
-  const h = now.getHours(), m = now.getMinutes();
+  const h = now.getHours();
   const isBefore7 = h < 7;
   const displayDate = isBefore7 ? new Date(now.getTime() - 86400000) : now;
   const seedDate = displayDate.toISOString().slice(0, 10);
-  const rand = rng(hashDate(seedDate));
+  const daySeed = hashDate(seedDate);
+  const rand = rng(daySeed);
 
-  // ---- content ----
-  const intros = [
-    "Сегодня планеты выстроились в ряд — без очереди, что уже чудо.",
-    "Утро начинается не с кофе, а с того, что звёзды шепчут:",
-    "Астрологический прогноз на сегодня короче, чем твой список дел:",
-    "Вселенная прислала уведомление. Спойлер: там хорошие новости.",
-    "Марс с Венерой зависли в созвоне. Пока они обсуждают, вот что важно:",
-    "Сегодня твой личный GPS работает в режиме «без пробок».",
-    "Звёзды отменили ретроградный Меркурий до обеда. Пользуйся моментом.",
-    "Если бы у дня был заголовок, он звучал бы так:",
-    "Гороскоп составлен при содействии кофе и добрых людей.",
-    "Согласно звёздной сводке, сегодня — день лёгких побед и вкусных обедов.",
-    "Пока ты читаешь это, планеты готовят тебе приятный сюрприз.",
-    "Сегодняшний девиз: «Спокойствие, только спокойствие и ещё один коммит».",
-    "Гороскоп на сегодня: коротко и ясно — всё будет хорошо. А теперь подробности:",
-    "Сегодня твоя интуиция работает мощнее, чем Wi-Fi в офисе.",
-    "Звёзды в хорошем настроении, поэтому сегодня можно чуть больше обычного."
+  // ---- general content ----
+  const vibes = [
+    "Всё будет хорошо. <span class=accent>Серьёзно.</span> Даже лучше, чем ты планируешь.",
+    "Сегодня планеты в хорошем настроении. И твой внутренний бариста — тоже.",
+    "День обещает быть тёплым. Даже если на улице дождь — внутри будет солнце.",
+    "Звёзды говорят: сегодня можно чуть больше обычного. Чуть больше улыбок, чуть меньше дедлайнов.",
+    "Сегодняшний девиз: спокойствие, только спокойствие и ещё один коммит.",
+    "Вселенная прислала уведомление: сегодня — день лёгких побед и вкусных обедов.",
+    "Если бы у дня был заголовок, он звучал бы как «Всё получится».",
+    "Сегодня твой личный GPS настроен на режим «без пробок». Вперёд.",
+    "Энергия дня — чистое спокойствие. Даже если дедлайн горит — ты горишь красиво.",
+    "Сегодня ты — главный герой. Не второстепенный, а тот, кого показывают в трейлере."
   ];
 
-  const bodies = [
-    "ты проснёшься с ощущением, что сегодня точно успеешь больше, чем вчера. И это правда — даже если успеешь только сделать хороший кофе.",
-    "энергия дня располагает к подвигам. Например, разобрать папку «Разобрать» на рабочем столе.",
-    "коммуникации будут лёгкими. Даже тот коллега, который обычно пишет «как там с задачей?», сегодня напишет «привет, как ты вообще?».",
-    "день располагает к экспериментам. Попробуй новый маршрут до работы или новый вид утреннего бутерброда.",
-    "вероятны неожиданные приятные мелочи. Кто-то угостит печеньем, или внезапно починят кулер.",
-    "продуктивность будет на высоте, если начать с самой неприятной задачи. Съешь лягушку утром — и дальше будет только приятнее.",
-    "твоя креативность зашкаливает. Если придумаешь гениальную идею — запиши, к обеду забудешь.",
-    "звёзды советуют не планировать слишком много. Оставь место для спонтанных встреч и неожиданных вкусняшек.",
-    "сегодня отличный день, чтобы закончить старые дела. Или хотя бы подвинуть их в статусе «в процессе».",
-    "настройка на день простая: делать то, что нравится, и не делать то, что не нравится. Ну, хотя бы попытаться.",
-    "сегодня ты в центре внимания, но без лишнего шума. Как хороший код — работает, и никто не замечает.",
-    "день обещает быть тёплым в прямом и переносном смысле. Даже если на улице дождь — внутри будет солнце.",
-    "вероятны открытия. Например, ты узнаешь, что в твоём любимом приложении есть тёмная тема, и это сделает день.",
-    "сегодня твой внутренний перфекционист берёт выходной. И это нормально.",
-    "звёзды говорят: делай сегодня только то, что сделает твой день лучше. Остальное — завтра.",
+  // ---- per-sign content pools (picked per sign using offset seed) ----
+  const signBodies = [
+    "проснёшься с ощущением, что сегодня успеешь больше, чем вчера. Даже если успеешь только сделать кофе — уже победа.",
+    "коммуникации будут лёгкими. Даже тот коллега, который пишет «как там с задачей?», сегодня спросит «как ты вообще?».",
+    "энергия располагает к подвигам. Например, разобрать папку «Разобрать» на рабочем столе.",
+    "день располагает к экспериментам. Попробуй новый маршрут или новый вид бутерброда.",
+    "вероятны приятные мелочи. Кто-то угостит печеньем или внезапно починят кулер.",
+    "продуктивность будет на высоте, если начать с самой неприятной задачи. Съешь лягушку утром.",
+    "креативность зашкаливает. Если придумаешь гениальную идею — запиши, к обеду забудешь.",
+    "звёзды советуют не планировать слишком много. Оставь место для спонтанных встреч и вкусняшек.",
+    "отличный день, чтобы закончить старые дела. Или подвинуть их в статусе «в процессе».",
+    "настройка простая: делать то, что нравится. Ну, хотя бы попытаться.",
+    "ты в центре внимания, но без лишнего шума. Как хороший код — работает, и никто не замечает.",
+    "день обещает сюрпризы. Возможно, ты узнаешь, что в любимом приложении есть тёмная тема.",
+    "твой внутренний перфекционист берёт выходной. И это нормально.",
+    "звёзды говорят: делай только то, что сделает твой день лучше. Остальное — завтра.",
     "сегодняшний день похож на хорошо написанный код: без багов и с понятными комментариями.",
-    "энергия дня — чистое спокойствие. Даже если дедлайн горит, ты горишь красиво и профессионально.",
-    "сегодня ты — главный герой своего дня. Не второстепенный, а тот, кого показывают в трейлере.",
-    "день располагает к дипломатии. Даже если хочешь ответить резко, сделай паузу — и ответь остроумно.",
-    "всё, что ты запланировал, получится. Ну, или почти всё. 80% — это тоже отлично."
+    "сегодня ты — энергия в чистом виде. Начинай важные дела до обеда.",
+    "дипломатия — твой конёк. Даже если хочешь ответить резко, сделай паузу и ответь остроумно.",
+    "всё, что запланировал, получится. Ну, или почти всё. 80% — это тоже отлично.",
+    "сегодня доверяй интуиции. Она работает громче, чем утренний будильник.",
+    "твой оптимизм заразителен. Делись им — это социально ответственно."
   ];
 
-  const twists = [
-    "Но есть нюанс: кто-то принесёт домашнюю выпечку, и план «не есть сладкое» провалится с треском.",
-    "Однако в 14:32 случится нечто, что заставит тебя улыбнуться. Возможно, это будет мем в чате.",
-    "Внимание: после обеда ты поймаешь себя на мысли, что день пролетел незаметно. И это хороший знак.",
-    "Но держись: коллега скажет что-то неожиданно мудрое. Запиши, это может пригодиться.",
-    "Есть подвох: начав мелкую задачу, ты не заметишь, как сделаешь половину большого проекта.",
-    "Внимание, спойлер: в конце дня ты почувствуешь удовлетворение. Даже если сделал не всё из списка.",
-    "Но есть риск: тебе предложат чай именно в тот момент, когда ты только нальёшь кофе. Выбирай с умом.",
-    "Однако ближе к вечеру откроется второе дыхание. Или третье. Считай сам.",
-    "Будь внимателен: сегодня велика вероятность случайно сделать комплимент и сделать чей-то день.",
-    "Но не расслабляйся: именно сегодня может прийти ответ на вопрос, который ты задавал месяц назад."
+  const signTwists = [
+    "Но есть нюанс: кто-то принесёт домашнюю выпечку, и план «не есть сладкое» провалится.",
+    "В 14:32 случится нечто, что заставит улыбнуться. Возможно, мем в чате.",
+    "После обеда поймаешь себя на мысли, что день пролетел незаметно. Хороший знак.",
+    "Коллега скажет неожиданно мудрую вещь. Запиши — пригодится.",
+    "Начав мелкую задачу, не заметишь, как сделаешь половину большого проекта.",
+    "Спойлер: в конце дня почувствуешь удовлетворение. Даже если сделал не всё.",
+    "Риск: тебе предложат чай именно в момент, когда только нальёшь кофе.",
+    "Ближе к вечеру откроется второе дыхание. Или третье.",
+    "Велика вероятность случайно сделать комплимент и сделать чей-то день.",
+    "Именно сегодня может прийти ответ на вопрос, заданный месяц назад."
   ];
 
-  const advices = [
-    "Совет дня: начни с малого — открой глаза, улыбнись, вдохни. Остальное приложится.",
-    "Мудрость: если что-то идёт не так — закрой ноутбук, открой окно, выдохни. Потом закрой окно и открой ноутбук снова.",
-    "Лайфхак: напиши себе в чат «Ты молодец!» и перечитывай в течение дня.",
-    "Рекомендация: сделай сегодня одно дело, которое откладывал месяц. Чувство облегчения — бесплатно.",
-    "Стратегия: раздели день на блоки по 45 минут. Между ними — 5 минут просто так. Посидеть, помечтать, посмотреть в окно.",
-    "Правило бутерброда: сначала хорошая новость, потом задача, потом ещё одна хорошая новость.",
-    "Звёзды советуют: если устал — отдохни. Если не устал — всё равно отдохни профилактически.",
-    "Дзен-совет: сегодня не сравнивай себя с другими. Сравнивай себя вчерашнего с собой сегодняшним.",
-    "Жизненное: если не знаешь, что делать — сделай чай. С чаем думается лучше. Проверено.",
-    "Техника: прежде чем нажать «отправить», перечитай. Или не перечитывай — иногда спонтанность работает.",
-    "Совет для смелых: попроси то, что давно хотел. Максимум — откажут. Минимум — случится магия.",
-    "Напоминание: ты уже справлялся со сложными задачами раньше. Справишься и сейчас.",
-    "Метод: если задача кажется огромной — представь, что это просто список маленьких шагов. А шаги ты умеешь делать.",
-    "Принцип дня: сделай сегодня что-то, что порадует завтрашнего тебя.",
-    "Главное: не забывай дышать. И улыбаться. Это бесплатно, а работает безотказно."
+  const signAdvices = [
+    "Совет: начни с малого — открой глаза, улыбнись, вдохни.",
+    "Если что-то идёт не так — закрой ноутбук, открой окно, выдохни.",
+    "Напиши себе «Ты молодец!» и перечитывай в течение дня.",
+    "Сделай одно дело, которое откладывал месяц. Облегчение — бесплатно.",
+    "Раздели день на блоки по 45 минут. Между ними — 5 минут просто так.",
+    "Если устал — отдохни. Если не устал — отдохни профилактически.",
+    "Не сравнивай себя с другими. Сравнивай себя вчерашнего с собой сегодняшним.",
+    "Если не знаешь, что делать — сделай чай. С чаем думается лучше.",
+    "Прежде чем нажать «отправить», перечитай. Или не перечитывай.",
+    "Попроси то, что давно хотел. Максимум — откажут. Минимум — магия.",
+    "Ты справлялся раньше. Справишься и сейчас.",
+    "Сделай сегодня что-то, что порадует завтрашнего тебя."
   ];
 
-  const bonuses = [
-    "Сегодня работает принцип «ППП» — Первое Правильное Пожелание: загадай желание в 12:00",
-    "Лови момент: лучший час для принятия решений — с 10 до 11",
-    "Сегодняшняя суперсила: ты читаешь мысли коллег по эмодзи в чатах",
-    "Техника дня: метод «помидора» — 25 минут работы, 5 минут отдыха. Или наоборот.",
-    "Счастливое предзнаменование: если увидишь голубя — день будет удачным. Если двух — очень удачным.",
-    "Сегодня — отличный день, чтобы начать что-то новое. Хотя бы новый блокнот.",
-    "Поверье дня: если твой код скомпилировался с первой попытки — купи лотерейный билет.",
-    "Если утром зевнул три раза — день будет продуктивным. Наука подтверждает (шёпотом).",
-    "Знак Вселенной: если сейчас читаешь это — ты именно там, где должен быть.",
-    "Сегодняшний челлендж: сделай ровно одно дело, которое потом можно будет вычеркнуть с чувством глубокого удовлетворения.",
-    "Магия чисел: если в течение дня ты дважды посмотришь на часы в одно и то же время — это знак, что пора на обед.",
-    "Суеверие: не наступай на люки, обходи все открытые крышки — но не из-за примет, а просто будь внимателен."
-  ];
-
-  const moods = [
-    "Бодрый, как утренний эспрессо", "Спокойный, как воскресное утро",
-    "Деловой, как идеально составленный план", "Вдохновлённый, как после хорошего фильма",
-    "Уверенный, как код без ошибок", "Расслабленный, как пятница вечером",
-    "Сосредоточенный, как перед дедлайном", "Весёлый, как переписка с другом",
-    "Философский, как после прочтения умной статьи", "Энергичный, как под любимый плейлист"
-  ];
-
-  const numbers = [
-    "42", "404", "200", "7", "13", "100", "0", "3.14", "256", "1024",
-    "2024", "88", "∞", "123", "007", "99", "50", "365", "24/7", "10x"
-  ];
-
-  const coffees = [
-    "Капучино — надёжная классика", "Эспрессо — коротко и мощно",
-    "Латте — нежно и обволакивающе", "Американо — просто и со вкусом",
-    "Раф — сегодня хочется сладкого", "Флэт уайт — для тех, кто знает толк",
-    "Матча-латте — экспериментально и зелёно", "Гляссе — десерт в чашке",
-    "Холодный кофе — даже если на улице прохладно", "Чай. Да, сегодня чай. И это норма."
-  ];
-
-  const zodiacSigns = [
+  const signsData = [
     { name: "Овен", dates: "21 мар — 19 апр", emoji: "♈" },
     { name: "Телец", dates: "20 апр — 20 май", emoji: "♉" },
     { name: "Близнецы", dates: "21 май — 20 июн", emoji: "♊" },
@@ -435,88 +282,97 @@ footer p {
     { name: "Рыбы", dates: "19 фев — 20 мар", emoji: "♓" }
   ];
 
-  const signDescriptions = [
-    "сегодня ты — энергия в чистом виде. Начинай важные дела до обеда.",
-    "сегодня твоё упорство даст плоды. Доделай то, что откладывал.",
-    "сегодня коммуникация — твой суперскилл. Объясни сложное простыми словами.",
-    "сегодня доверяй интуиции. Она работает громче логики.",
-    "сегодня ты в центре внимания — и это твой день. Сияй.",
-    "сегодня порядок в делах принесёт порядок в голове. Структурируй.",
-    "сегодня твоё чувство баланса спасёт ситуацию. Ты — дипломат дня.",
-    "сегодня твоя страсть к деталям пригодится. Никто не заметит, а ты заметишь.",
-    "сегодня твой оптимизм заразителен. Делись им — это социально ответственно.",
-    "сегодня твоя дисциплина — твоя суперсила. План выполнится.",
-    "сегодня твоя креативность бьёт ключом. Предложи нестандартное решение.",
-    "сегодня твоя эмпатия нужна команде. Услышь тех, кто молчит."
+  const moods = [
+    "Бодрый как эспрессо", "Спокойный как воскресенье",
+    "Деловой как план", "Вдохновлённый как после кино",
+    "Уверенный как код без ошибок", "Расслабленный как пятница",
+    "Сосредоточенный как перед дедлайном", "Весёлый как переписка с другом",
+    "Философский как после умной статьи", "Энергичный как любимый плейлист"
   ];
 
+  const numbers = [
+    "42", "404", "200", "7", "13", "100", "0", "3.14", "256", "1024",
+    "88", "∞", "123", "007", "99", "50", "365", "24/7", "10x", "8"
+  ];
+
+  // ---- helpers per sign ----
+  function signPrediction(signIdx) {
+    const s = hashDate(seedDate + signIdx);
+    const r = rng(s);
+    const body = pick(signBodies, r);
+    const twist = pick(signTwists, r);
+    const advice = pick(signAdvices, r);
+    const mood = pick(moods, r);
+    const num = pick(numbers, r);
+    return { body, twist, advice, mood, num };
+  }
+
   // ---- rendering ----
-  const isPreview = isBefore7;
   const dayNames = ["воскресенье", "понедельник", "вторник", "среда", "четверг", "пятница", "суббота"];
   const monthNames = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
 
   document.getElementById('dateDisplay').innerHTML =
     `<span>📅 ${displayDate.getDate()} ${monthNames[displayDate.getMonth()]}, ${dayNames[displayDate.getDay()]}</span>`;
 
-  if (isPreview) {
+  if (isBefore7) {
     document.getElementById('updateTime').innerHTML =
       `<span>⏰ Сегодняшний гороскоп выйдет в 07:00</span>`;
-    document.getElementById('mainCard').classList.remove('loading');
-    document.getElementById('mainCard').classList.add('visible');
-    document.getElementById('horoscopeText').innerHTML = `
+    document.getElementById('introCard').classList.remove('loading');
+    document.getElementById('introCard').classList.add('visible');
+    document.getElementById('introText').innerHTML = `
       <div class="before-7am">
         <div class="emoji-big">🌙</div>
         <h2>Гороскоп ещё готовится</h2>
-        <p>Звёзды ещё не проснулись. Загляни после 07:00 — будет горячий гороскоп прямо из типографии.</p>
-        <p style="margin-top:12px;font-size:13px">А пока — вот тебе вчерашний, чтобы точно знать, что день был хорошим:</p>
+        <p>Звёзды ещё не проснулись. Загляни после 07:00.</p>
+        <p style="margin-top:12px;font-size:13px">А пока — держи вчерашний, чтобы точно знать, что день был хорошим:</p>
       </div>
     `;
-    document.getElementById('signDay').style.display = 'none';
-    document.getElementById('extraGrid').style.display = 'none';
+    document.getElementById('signsGrid').innerHTML = '';
   }
 
-  // main horoscope
-  const intro = pick(intros, rand);
-  const body = pick(bodies, rand);
-  const twist = pick(twists, rand);
-  const advice = pick(advices, rand);
-  const bonus = pick(bonuses, rand);
+  const vibe = pick(vibes, rand);
 
-  const horoHTML = `
-    <p><span class="intro">${intro}</span></p>
-    <p>${body}</p>
-    <p><span class="highlight">✨ ${twist}</span></p>
-    <p><span class="highlight">💡 ${advice}</span></p>
-    <p style="font-style:italic;color:rgba(240,234,224,0.5);font-size:15px;border-top:1px solid rgba(255,255,255,0.06);padding-top:16px;margin-top:16px">${bonus}</p>
-  `;
-
-  if (!isPreview) {
+  if (!isBefore7) {
     document.getElementById('updateTime').innerHTML = `<span>☀️ Обновлено сегодня в 07:00</span>`;
-    document.getElementById('horoscopeText').innerHTML = horoHTML;
-    document.getElementById('mainCard').classList.remove('loading');
-    document.getElementById('mainCard').classList.add('visible');
+    document.getElementById('introCard').classList.remove('loading');
+    document.getElementById('introCard').classList.add('visible');
+    document.getElementById('introText').innerHTML = `<p>${vibe}</p>`;
 
-    // sign of the day
-    const signIdx = Math.floor(rand() * zodiacSigns.length);
-    const sign = zodiacSigns[signIdx];
-    const signDesc = signDescriptions[signIdx];
-    document.getElementById('signIcon').textContent = sign.emoji;
-    document.getElementById('signText').innerHTML =
-      `<strong>${sign.name}</strong> (${sign.dates}): ${signDesc}`;
-    document.getElementById('signDay').style.display = 'flex';
-
-    // extra grid
-    document.getElementById('moodValue').textContent = pick(moods, rand);
-    document.getElementById('numberValue').textContent = pick(numbers, rand);
-    document.getElementById('coffeeValue').textContent = pick(coffees, rand);
-    document.getElementById('extraGrid').style.display = 'grid';
+    let html = '';
+    for (let i = 0; i < signsData.length; i++) {
+      const s = signsData[i];
+      const p = signPrediction(i);
+      html += `
+        <div class="sign-card">
+          <div class="sign-header">
+            <span class="sign-emoji">${s.emoji}</span>
+            <span class="sign-name">${s.name}</span>
+            <span class="sign-dates">${s.dates}</span>
+          </div>
+          <div class="sign-prediction">
+            <p>${s.name} сегодня ${p.body}</p>
+            <p>✨ ${p.twist}</p>
+            <p>💡 ${p.advice}</p>
+          </div>
+          <div class="sign-meta">
+            <span>🎯 ${p.mood}</span>
+            <span>🔢 ${p.num}</span>
+          </div>
+        </div>
+      `;
+    }
+    document.getElementById('signsGrid').innerHTML = html;
   }
 
   // ---- share ----
   document.getElementById('shareBtn').addEventListener('click', function() {
-    const text = isPreview
-      ? `🌙 Гороскоп дня ещё готовится (выйдет в 07:00). Загляни на horoscope!`
-      : `☀️ Утренний гороскоп на ${displayDate.getDate()} ${monthNames[displayDate.getMonth()]}:\n«${body}»\n${advice}`;
+    const first = isBefore7 ? '' : signsData.map((s, i) => {
+      const p = signPrediction(i);
+      return `${s.emoji} ${s.name}: ${p.body} ${p.advice}`;
+    }).slice(0, 3).join('\n');
+    const text = isBefore7
+      ? `🌙 Гороскоп дня ещё готовится (выйдет в 07:00)`
+      : `☀️ Утренний гороскоп на ${displayDate.getDate()} ${monthNames[displayDate.getMonth()]}:\n${first}\n\nОстальные знаки — по ссылке!`;
     if (navigator.share) {
       navigator.share({ title: 'Утренний гороскоп', text }).catch(() => {});
     } else {
