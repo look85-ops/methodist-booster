@@ -4,64 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Промпты для методиста — Бустер методиста</title>
-    <meta name="description" content="Советы по работе с AI (роль, температура, приватность) и конструктор промптов под задачу. Для YandexGPT, GigaChat, ChatGPT.">
+  <meta name="description" content="20+ промптов для L&D-методиста: анализ ЦА, проектирование курсов, сценарии, кейсы, A/B-тесты, интервью с экспертом. Конструктор промптов по формуле РЗКФ.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://look85-ops.github.io/NAAssistant/methodist-booster/prompts.html">
+  <link rel="canonical" href="https://look85-ops.github.io/metod_buster/prompts.html">
   <meta name="theme-color" content="#FFFFFF">
-
   <meta property="og:title" content="Промпты для методиста — Бустер методиста">
-  <meta property="og:description" content="Советы по работе с AI и конструктор промптов под задачу.">
-  <meta property="og:url" content="https://look85-ops.github.io/NAAssistant/methodist-booster/prompts.html">
+  <meta property="og:description" content="20+ промптов для L&D-методиста и конструктор по формуле РЗКФ.">
+  <meta property="og:url" content="https://look85-ops.github.io/metod_buster/prompts.html">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Бустер методиста">
   <meta property="og:locale" content="ru_RU">
-
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Промпты для методиста — Бустер методиста">
+  <meta name="twitter:description" content="20+ промптов для L&D и конструктор.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="styles/tokens.css">
   <link rel="stylesheet" href="styles/base.css">
   <link rel="stylesheet" href="styles/components.css">
   <link rel="stylesheet" href="styles/pages.css">
   <style>
-    /* компактнее отступы секций только на этой странице */
     .tool-page section{ padding: var(--s-4) 0 }
     @media (max-width: 840px){ .tool-page section{ padding: var(--s-3) 0 } }
-
-    /* full-bleed: позволяет растянуть фон секции на всю ширину в пределах контейнера */
-    .full-bleed {
-      margin-left: calc(50% - 50vw);
-      margin-right: calc(50% - 50vw);
-      padding-left: calc(50vw - 50%);
-      padding-right: calc(50vw - 50%);
-    }
-
-    /* локальные карточки (белые панели на жёлтом фоне) */
+    .full-bleed { margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); padding-left: calc(50vw - 50%); padding-right: calc(50vw - 50%); }
     .card { background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--s-3); box-shadow: var(--shadow-sm) }
-
-    /* локальные варианты кнопок (сохранение общего стиля) */
     .btn.primary { background: var(--accent); color: var(--text-inverse); border-color: var(--accent) }
     .btn.ghost   { background: transparent; border-color: var(--border); color: var(--text) }
-
-    /* тонкий разделитель секций */
     .thin-sep { border: none; height: 1px; background: var(--border); margin: var(--s-3) 0 var(--s-3) }
-
-    .grid-2 { display:grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); align-items:start }
-    /* компактнее вертикальный ритм внутри карточек */
-    .stack > * + * { margin-top: var(--s-2) }
+    .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:var(--s-4); align-items:start }
     .hint { color: var(--muted); font-size: 13px }
-    .result { white-space: pre-wrap; min-height: 280px }
-    .chips { display:flex; flex-wrap:wrap; gap:8px }
-    .chip { display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border:1px solid var(--border); border-radius:999px; background:rgba(255,255,255,.04); font-size:13px; cursor:pointer }
-    .chip input { margin:0 }
-    .lib details { background: rgba(255,255,255,.03); border:1px solid var(--border); border-radius:12px; padding: var(--s-3) }
-    .lib details + details { margin-top: var(--s-2) }
-    textarea, select, input[type="text"] { width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:10px; background:rgba(255,255,255,.04); color:var(--text) }
+    .result { white-space: pre-wrap; min-height: 280px; font-family: inherit; width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:10px; background:rgba(255,255,255,.04); color:var(--text); resize:vertical }
+    textarea, select, input[type="text"] { width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:10px; background:rgba(255,255,255,.04); color:var(--text); font-size:14px }
+    select { cursor:pointer }
     .toolbar { display:flex; gap:8px; flex-wrap:wrap }
     .btn.small { padding:8px 12px; font-size:14px }
     .tips-grid{display:grid;grid-template-columns:1fr;gap:var(--s-2);margin-top:var(--s-2)}
-    /* чуть менее насыщенная подсветка карточек советов */
     .tip-card{padding:var(--s-3);border:1px solid var(--border);border-radius:var(--radius);background:color-mix(in srgb, var(--bg-elev) 96%, var(--bg-yellow) 4%);transition:border-color var(--t) var(--ease)}
     .tip-card:hover{border-color:var(--accent)}
     .tip-card h3{font-size:16px;margin:0 0 var(--s-2)}
@@ -69,17 +46,15 @@
     .tip-card dd{margin:0 0 0 var(--s-3);font-size:13px;color:var(--text-muted)}
     .tip-card ul{margin:0;padding-left:16px;font-size:13px}
     .tip-card ul li{margin-bottom:4px;line-height:1.5}
-    .prompt-example small{display:block;margin:6px 0 2px;color:var(--text-soft);font-size:11px}
-    .example-good{padding:8px 12px;border-radius:6px;font-size:12px;line-height:1.5;background:rgba(34,197,94,.10);border-left:3px solid #22c55e}
     .temp-scale{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:var(--s-2);font-size:12px}
     .temp-scale div{padding:10px;border:1px solid var(--border);border-radius:8px;background:rgba(255,234,108,.08)}
     .temp-scale div strong{display:block;font-size:13px;margin-bottom:4px}
-    /* облегчённая заливка для шаблонов */
-    .prompt-tpl details{margin-top:var(--s-2);border:1px solid var(--border);border-radius:var(--radius);padding:var(--s-3);background:color-mix(in srgb, var(--bg-elev) 96%, var(--bg-yellow) 4%);transition:border-color var(--t) var(--ease)}
-    .prompt-tpl details:hover{border-color:var(--accent)}
-    .prompt-tpl details summary{cursor:pointer;font-weight:var(--fw-semi);font-size:14px}
-    .prompt-tpl details pre{font-size:12px;line-height:1.5;margin:var(--s-2) 0 0;white-space:pre-wrap;color:var(--text)}
-    /* next-steps делаем менее контрастным и компактнее */
+    @media (max-width: 840px){ .grid-2{ grid-template-columns:1fr } .tips-grid{grid-template-columns:1fr} .temp-scale{grid-template-columns:1fr} }
+    .form-group { margin-bottom:var(--s-2) }
+    .form-group label { display:block; font-size:13px; font-weight:500; margin-bottom:4px; color:var(--text-muted) }
+    .form-group select, .form-group input, .form-group textarea { margin-top:2px }
+    .two-cols { display:grid; grid-template-columns:1fr 1fr; gap:var(--s-2) }
+    @media (max-width: 640px){ .two-cols { grid-template-columns:1fr } }
     .next-steps{margin-top:var(--s-3);padding:var(--s-3);background:color-mix(in srgb, var(--bg-elev) 96%, var(--bg-yellow) 4%);border:1px solid var(--border);border-radius:var(--radius)}
     .next-steps h3{margin:0 0 var(--s-3);font-size:18px}
     .next-steps-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-3)}
@@ -89,7 +64,6 @@
     .next-steps a:hover .arrow{margin-left:10px}
     .next-steps a small{display:block;margin-top:4px;font-weight:400;color:var(--text-muted);font-size:13px}
     @media (max-width: 840px){ .next-steps-grid{grid-template-columns:1fr} }
-    @media (max-width: 840px){ .grid-2{ grid-template-columns:1fr } .tips-grid{grid-template-columns:1fr} .temp-scale{grid-template-columns:1fr} }
   </style>
 </head>
 <body class="tool-page">
@@ -107,6 +81,7 @@
         <a href="cards.html">Карты</a>
         <a href="audit.html">Аудит</a>
         <a href="vision.html">Видение</a>
+        <a href="prompts.html">Промпты</a>
         <a href="ai-tools.html">AI-инструменты</a>
       </nav>
     </div>
@@ -120,11 +95,11 @@
     </div>
 
     <h1>Промпты для методиста</h1>
-    <p style="margin-top: var(--s-3)">
+    <p style="margin-top:var(--s-3)">
       <a href="ai-tools.html" style="display:inline-block;background:var(--bg-yellow);color:var(--text);padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:var(--fw-semi);border:1px solid var(--text)">Каталог AI-сервисов → AI-инструменты</a>
     </p>
 
-    <section aria-labelledby="tips-title" style="margin-top: var(--s-4)">
+    <section aria-labelledby="tips-title" style="margin-top:var(--s-4)">
       <h2 id="tips-title">Советы по работе с AI</h2>
       <div class="tips-grid">
         <div class="tip-card">
@@ -140,66 +115,73 @@
         <div class="tip-card">
           <h3>Приватность и гигиена</h3>
           <ul>
-            <li><strong>Не вставляйте ФИО, телефоны, email</strong> — заменяйте на роли: «руководитель отдела», «сотрудник со стажем 2 года»</li>
+            <li><strong>Не вставляйте ФИО, телефоны, email</strong> — заменяйте на роли</li>
             <li><strong>Не указывайте название компании, подразделения, локации</strong></li>
             <li><strong>Не загружайте файлы</strong> — копируйте фрагменты текста. Текстовый промпт точнее и безопаснее</li>
             <li><strong>Не вставляйте зарплаты, KPI, внутренние документы</strong> и регламенты</li>
             <li><strong>Чистите историю чата</strong> после работы — данные хранятся на стороне сервиса</li>
           </ul>
         </div>
-        
-      </div>
-
-      <div class="tip-card" style="margin-top: var(--s-2)">
-        <h3>Температура — насколько креативно отвечает AI</h3>
-        <p style="font-size:13px;margin:0 0 var(--s-2);color:var(--text-muted)">Параметр от 0 до 1 (иногда до 2). Можно задать прямо в промпте: «Температура: 0.3». Чем ниже — тем строже и предсказуемее ответ. Чем выше — тем больше вариативности и риска «галлюцинаций».</p>
-        <div class="temp-scale">
-          <div><strong>0.0–0.3 · строго</strong>Чек-листы, регламенты, формулировки целей, тесты, факты. Когда нужна точность и повторяемость.</div>
-          <div><strong>0.4–0.7 · средне</strong>Сценарии занятий, структура курса, объяснения тем, кейсы. Баланс точности и живости.</div>
-          <div><strong>0.8–1.0 · креативно</strong>Метафоры, нейминг, идеи активностей, истории, провокации. Когда нужна свежесть, а не точность.</div>
+        <div class="tip-card">
+          <h3>Температура — насколько креативно отвечает AI</h3>
+          <p style="font-size:13px;margin:0 0 var(--s-2);color:var(--text-muted)">Параметр от 0 до 1. Можно задать прямо в промпте. Чем ниже — тем строже и предсказуемее ответ.</p>
+          <div class="temp-scale">
+            <div><strong>0.0–0.3 · строго</strong>Чек-листы, регламенты, формулировки целей, тесты</div>
+            <div><strong>0.4–0.7 · средне</strong>Сценарии, структура курса, объяснения, кейсы</div>
+            <div><strong>0.8–1.0 · креативно</strong>Метафоры, нейминг, идеи, провокации</div>
+          </div>
         </div>
-        
       </div>
     </section>
 
-    <!-- Конструктор промптов — яркий жёлтый блок как на главной -->
     <section class="sec-y full-bleed" aria-labelledby="builder-title">
       <div class="container">
         <h2 id="builder-title">Конструктор промптов</h2>
-        <p class="hint">Конструктор собирает промпт по формуле РЗКФ (Роль + Задача + Контекст + Формат). Выберите тип задачи, аудиторию и контекст — получите готовый текст.</p>
+        <p class="hint">20+ промптов по категориям. Выберите задачу, настройте тон и формат — получите готовый текст для вставки в чат.</p>
 
-        <div class="grid-2" style="margin-top: var(--s-2)" aria-label="Конструктор промпта">
-          <div class="card stack">
+        <div class="grid-2" style="margin-top:var(--s-2)" aria-label="Конструктор промпта">
+          <div class="card">
             <h3>Параметры</h3>
-            <label>Задача
-              <select id="task">
-                <option value="audience">Анализ ЦА</option>
-                <option value="goals">Постановка учебных целей</option>
-                <option value="structure">Структура курса/модуля</option>
-                <option value="objections">Работа с возражениями</option>
-                <option value="interview">Интервью с экспертом</option>
-              </select>
-            </label>
-
-            <label>Температура (креативность)
-              <select id="temperature">
-                <option value="0.3">0.0–0.3 · строго (анализ, цели, факты)</option>
-                <option value="0.5">0.4–0.7 · средне (сценарии, структура, кейсы)</option>
+            <div class="form-group">
+              <label for="taskSelect">Задача <span style="color:var(--text-muted);font-weight:400">— 20 шаблонов в 5 категориях</span></label>
+              <select id="taskSelect"></select>
+            </div>
+            <div class="two-cols">
+              <div class="form-group">
+                <label for="toneSelect">Тон</label>
+                <select id="toneSelect">
+                  <option value="formal">Формальный (отчёты, экспертиза)</option>
+                  <option value="conversational" selected>Разговорный (команда, коллеги)</option>
+                  <option value="coaching">Коучинговый (развитие, рефлексия)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="formatSelect">Формат вывода</label>
+                <select id="formatSelect">
+                  <option value="table">Таблица</option>
+                  <option value="checklist">Чек-лист</option>
+                  <option value="text" selected>Текст / абзацы</option>
+                  <option value="story">Сценарий / нарратив</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="audInput">Аудитория (свободный ввод)</label>
+              <input id="audInput" type="text" placeholder="Например: сотрудники продаж; линейные руководители; новые специалисты">
+            </div>
+            <div class="form-group">
+              <label for="ctxInput">Контекст (1–5 строк)</label>
+              <textarea id="ctxInput" rows="4" placeholder="Тема, цель, ограничения, дедлайн. Имеющиеся материалы: коротко перечислите — презентации, регламенты, записи вебинаров (без названий компаний и ФИО)."></textarea>
+            </div>
+            <div class="form-group">
+              <label for="tempSelect">Температура (креативность)</label>
+              <select id="tempSelect">
+                <option value="0.3">0.0–0.3 · строго (анализ, факты, чек-листы)</option>
+                <option value="0.5" selected>0.4–0.7 · средне (сценарии, кейсы, структура)</option>
                 <option value="0.8">0.8–1.0 · креативно (идеи, нейминг, метафоры)</option>
               </select>
-            </label>
-            <p class="hint" style="margin-top:4px">Чем выше — тем больше вариативности, но и риска «галлюцинаций».</p>
-
-            <div>
-              <label>Аудитория (свободный ввод)
-                <input id="aud" type="text" placeholder="Например: сотрудники продаж; линейные руководители; новые специалисты">
-              </label>
+              <p class="hint" style="margin-top:4px">Чем выше — тем больше вариативности, но и риска «галлюцинаций».</p>
             </div>
-
-            <label>Контекст (1–5 строк)
-              <textarea id="ctx" rows="5" placeholder="Тема, цель, ограничения, дедлайн. Имеющиеся материалы: коротко перечислите — презентации, регламенты, записи вебинаров (без названий компаний и ФИО)."></textarea>
-            </label>
-
             <div class="toolbar">
               <button class="btn primary small" id="buildBtn">Собрать промпт</button>
               <button class="btn ghost small" id="copyBtn">Скопировать</button>
@@ -209,8 +191,8 @@
 
           <div class="card">
             <h3>Готовый промпт</h3>
-            <textarea id="result" class="result" aria-label="Готовый промпт" placeholder="Здесь появится собранный промпт"></textarea>
-            <p class="hint">Подсказка: добавляйте конкретику про ЦА и успех в работе. Чем конкретнее контекст, тем точнее выход.</p>
+            <textarea id="resultBox" class="result" aria-label="Готовый промпт" placeholder="Выберите задачу, настройте параметры и нажмите «Собрать промпт»"></textarea>
+            <p class="hint">Чем конкретнее контекст, тем точнее выход AI. Добавляйте конкретику про ЦА и ожидаемый результат.</p>
           </div>
         </div>
       </div>
@@ -219,32 +201,23 @@
     <hr class="thin-sep" aria-hidden="true">
 
     <div class="next-steps" role="navigation" aria-label="Другие инструменты">
+      <h3>Другие инструменты</h3>
       <div class="next-steps-grid">
-        <a href="ai-tools.html">
-          Каталог AI-сервисов <span class="arrow">→</span>
-          <small>Подборка проверенных инструментов для методиста: тексты, исследования, презентации, видео и другое</small>
-        </a>
-        <a href="audit.html">
-          Аудит запроса заказчика <span class="arrow">→</span>
-        </a>
-        <a href="vision.html">
-          Видение продукта <span class="arrow">→</span>
-          <small>Соберите видение по JTBD: от боли пользователя к MVP</small>
-        </a>
+        <a href="ai-tools.html">Каталог AI-сервисов <span class="arrow">→</span><small>Проверенные инструменты для методиста: тексты, исследования, презентации</small></a>
+        <a href="activities.html">AI-генератор активностей <span class="arrow">→</span><small>Сценарии, упражнения, форматы под задачу</small></a>
+        <a href="vision.html">Видение продукта <span class="arrow">→</span><small>От боли пользователя к MVP по JTBD</small></a>
+        <a href="audit.html">Аудит запроса <span class="arrow">→</span><small>«Учить или не учить» — разбор по Mager & Pipe</small></a>
       </div>
     </div>
-
   </main>
 
   <footer class="site-footer">
     <div class="container footer-row">
-      <small>© Наталья Марценюк, 2026 · Библиотека промптов</small>
-
+      <small>© Наталья Марценюк, 2026 · <a href="https://look85-ops.github.io/NAAssistant/portfolio/" target="_blank" rel="noopener">Портфолио</a> · <a href="https://look85-ops.github.io/NAAssistant/methodist-booster/" target="_blank" rel="noopener">Бустер методиста</a></small>
     </div>
   </footer>
 
   <script>
-  // мобильное меню
   document.getElementById('hamburgerBtn')?.addEventListener('click', function(){
     const nav = document.getElementById('navLinks');
     const expanded = this.getAttribute('aria-expanded') === 'true';
@@ -252,40 +225,88 @@
     nav.classList.toggle('open');
   });
 
-  // конструктор промптов: собираем из шаблонов + параметры
-  const ROLE = `Роль: ты — senior learning analyst и performance consultant.`;
-  const TEMPLATES = {
-    audience: `Задача: проанализируй целевую аудиторию учебного курса и дай рекомендации по формату и контенту.\nФормат: таблица «Характеристика → Влияние на дизайн → Рекомендация». В конце — резюме на 3–5 строк. Если данных мало — явно укажи, что нужно уточнить.`,
-    goals: `Задача: сформулируй учебные цели по таксономии Блума.\nФормат: одна ключевая цель в формате действия (настоящим временем, без «сможет» и «научится») + 2–3 вспомогательные по возрастающим уровням (понимание, применение, анализ). Без канцелярита.`,
-    structure: `Задача: разработай структуру учебного курса/модуля/дня обучения.\nФормат: для каждого блока — название, цель, формат подачи (мини-лекция, кейс, групповая работа), интерактив, хронометраж. В конце — задание на перенос в работу.`,
-    objections: `Задача: проработай типичные возражения по теме обучения.\nФормат: выяви возражения, укажи, где в курсе они вспыхнут, и как встроить отработку (подсказки, кейсы-ошибки, интерактив «возражение → ответ»). Для каждого — какой механизм поведенческой науки используем. Если данных не хватает — явно фиксируй.`,
-    interview: `Задача: подготовь интервью с экспертом.\nФормат: инвентаризация материалов, Gap map, вопросы по блокам с follow-ups, повестки на 30 и 60 минут, письмо-приглашение.`
-  };
+  const PROMPTS = [
+    { id:'audience', cat:'Диагностика и анализ', title:'Анализ ЦА', prompt:'Задача: проанализируй целевую аудиторию учебного курса и дай рекомендации по формату и контенту.\nФормат: таблица «Характеристика → Влияние на дизайн → Рекомендация». В конце — резюме на 3–5 строк. Если данных мало — явно укажи, что нужно уточнить.' },
+    { id:'needs', cat:'Диагностика и анализ', title:'Анализ потребностей', prompt:'Задача: проведи анализ учебных потребностей (needs analysis) для заданной темы и аудитории.\nФормат: опиши текущее состояние (as-is), желаемое (to-be), ключевой разрыв (gap) и 2–3 причины этого разрыва. Для каждой причины — рекомендацию: обучение или другое решение.' },
+    { id:'gap', cat:'Диагностика и анализ', title:'Gap-анализ компетенций', prompt:'Задача: проведи gap-анализ компетенций для целевой роли.\nФормат: таблица «Компетенция → Требуемый уровень → Текущий уровень → Разрыв → Приоритет». В конце — топ-3 компетенции для развития и рекомендованный формат обучения.' },
+    { id:'audit-course', cat:'Диагностика и анализ', title:'Аудит существующего курса', prompt:'Задача: проведи аудит существующего учебного курса.\nФормат: 1) цель и ЦА (соответствует ли), 2) сильные стороны (2–3), 3) слабые места (2–3 с гипотезой причины), 4) рекомендации: что убрать, что добавить, что изменить. Для каждой рекомендации — ожидаемый эффект.' },
+    { id:'goals', cat:'Проектирование', title:'Постановка учебных целей', prompt:'Задача: сформулируй учебные цели по таксономии Блума.\nФормат: одна ключевая цель в формате действия (настоящим временем, без «сможет» и «научится») + 2–3 вспомогательные по возрастающим уровням (понимание, применение, анализ). Без канцелярита.' },
+    { id:'structure', cat:'Проектирование', title:'Структура курса/модуля', prompt:'Задача: разработай структуру учебного курса/модуля/дня обучения.\nФормат: для каждого блока — название, цель, формат подачи (мини-лекция, кейс, групповая работа), интерактив, хронометраж. В конце — задание на перенос в работу.' },
+    { id:'day-scenario', cat:'Проектирование', title:'Сценарий учебного дня', prompt:'Задача: разработай сценарий учебного дня (8 часов с перерывами).\nФормат: таблица «Время → Блок → Формат → Активность → Материалы». Учитывай смену активностей каждые 60–90 минут, 2 кофе-брейка, обед. В конце — энергизатор и рефлексия дня.' },
+    { id:'activity-design', cat:'Проектирование', title:'Дизайн учебного задания', prompt:'Задача: разработай учебное задание/активность для заданной темы.\nФормат: 1) цель задания (какую компетенцию тренирует), 2) инструкция для участника, 3) механика (группы/время/материалы), 4) критерии успеха, 5) дебрифинг (3 вопроса для обсуждения после).' },
+    { id:'case', cat:'Проектирование', title:'Разработка кейса', prompt:'Задача: разработай учебный кейс для заданной темы.\nФормат: 1) контекст (роль, ситуация), 2) проблема/дилемма, 3) данные для анализа (3–5 фактов), 4) вопросы для команды, 5) модельное решение. Кейс должен быть реалистичным, без вымышленных цифр.' },
+    { id:'explanation', cat:'Разработка контента', title:'Объяснение темы', prompt:'Задача: напиши объяснение заданной темы для указанной аудитории.\nФормат: 1) аналогия/метафора для входа, 2) основное объяснение (3–5 предложений без жаргона), 3) пример из реальной практики, 4) 2–3 вопроса для самопроверки.' },
+    { id:'checklist', cat:'Разработка контента', title:'Чек-лист / памятка', prompt:'Задача: создай чек-лист или памятку для заданной рабочей ситуации.\nФормат: не более 7 пунктов, каждый — конкретное действие (начинается с глагола). Для каждого пункта — пояснение «почему это важно».' },
+    { id:'video-script', cat:'Разработка контента', title:'Скрипт видео/подкаста', prompt:'Задача: напиши скрипт для учебного видео или подкаста (3–5 минут).\nФормат: 1) хук (1–2 предложения), 2) основной контент (3 блока по 30–40 сек), 3) пример/история, 4) CTA. Разметка: [экран/визуал] и [голос/текст].' },
+    { id:'presentation', cat:'Разработка контента', title:'Структура презентации', prompt:'Задача: подготовь структуру презентации на заданную тему.\nФормат: для каждого слайда — заголовок, 2–3 ключевых сообщения, визуальная рекомендация. Логика: проблема → причины → решение → результаты → шаги. Не более 10 слайдов.' },
+    { id:'quiz', cat:'Оценка и метрики', title:'Проверочные вопросы', prompt:'Задача: разработай 5 проверочных вопросов по теме.\nФормат: 2 на понимание (выбери верное), 2 на применение (кейс/ситуация), 1 на анализ (почему / что если). Для каждого — правильный ответ и дистрактор.' },
+    { id:'ab-hypothesis', cat:'Оценка и метрики', title:'Гипотеза для A/B-теста', prompt:'Задача: сформулируй гипотезу для A/B-теста учебного материала.\nФормат: 1) что меняем (контроль vs вариант), 2) гипотеза по SMART, 3) ключевая метрика, 4) вторичные метрики, 5) минимальный эффект для победы.' },
+    { id:'aos-analysis', cat:'Оценка и метрики', title:'Анализ АОС/опроса', prompt:'Задача: проанализируй результаты опроса обратной связи (AOS).\nФормат: 1) средняя, медиана, дисперсия, доля 10/10, 2) топ-3 сильных сторон, 3) топ-3 зон роста, 4) аномалии, 5) 2–3 рекомендации с приоритетом.' },
+    { id:'objections', cat:'Коммуникации', title:'Работа с возражениями', prompt:'Задача: проработай типичные возражения по теме обучения.\nФормат: выяви возражения, укажи, где в курсе они вспыхнут, и как встроить отработку (кейсы-ошибки, интерактив). Для каждого — какой механизм поведенческой науки используем.' },
+    { id:'expert-interview', cat:'Коммуникации', title:'Интервью с экспертом', prompt:'Задача: подготовь интервью с экспертом.\nФормат: инвентаризация материалов, Gap map, вопросы по блокам с follow-ups, повестки на 30 и 60 минут, письмо-приглашение.' },
+    { id:'announcement', cat:'Коммуникации', title:'Анонс обучения', prompt:'Задача: напиши анонс учебного курса для внутренней коммуникации.\nФормат: 1) тема (для кого), 2) проблема (почему важно), 3) решение (что узнают), 4) формат и даты, 5) CTA. Без канцелярита, до 1500 знаков.' },
+    { id:'cover-letter', cat:'Коммуникации', title:'Сопроводительное письмо', prompt:'Задача: напиши сопроводительное письмо под заданную вакансию.\nФормат: 1) открытие (что привлекло), 2) ключевой опыт (2–3 достижения в цифрах), 3) связь с потребностями компании, 4) закрытие (следующий шаг). Без шаблонных фраз.' }
+  ];
 
-  function buildPrompt(){
-    const task = document.getElementById('task').value;
-    const aud = document.getElementById('aud').value?.trim();
-    const ctx = document.getElementById('ctx').value?.trim();
-    const temp = document.getElementById('temperature').value;
-
-    let out = ROLE;
-    out += '\n' + (TEMPLATES[task] || '');
-    if (aud) out += `\nАудитория: ${aud}.`;
-    if (ctx) out += `\nКонтекст: ${ctx}.`;
-    out += `\nТемпература: ${temp}.`;
-
-    document.getElementById('result').value = out;
+  function populateTaskSelect() {
+    const sel = document.getElementById('taskSelect');
+    const groups = {};
+    PROMPTS.forEach(p => {
+      if (!groups[p.cat]) groups[p.cat] = [];
+      groups[p.cat].push(p);
+    });
+    sel.innerHTML = Object.entries(groups).map(([cat, list]) =>
+      `<optgroup label="${cat}">${list.map(p => `<option value="${p.id}">${p.title}</option>`).join('')}</optgroup>`
+    ).join('');
   }
 
-  document.getElementById('buildBtn')?.addEventListener('click', buildPrompt);
-  document.getElementById('clearBtn')?.addEventListener('click', function(){
-    ['aud','ctx'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
-    document.getElementById('result').value = '';
+  function buildPrompt() {
+    const taskId = document.getElementById('taskSelect').value;
+    const tone = document.getElementById('toneSelect').value;
+    const format = document.getElementById('formatSelect').value;
+    const aud = document.getElementById('audInput').value.trim();
+    const ctx = document.getElementById('ctxInput').value.trim();
+    const temp = document.getElementById('tempSelect').value;
+
+    const prompt = PROMPTS.find(p => p.id === taskId);
+    if (!prompt) return;
+
+    const toneMap = { formal:'Формальный, деловой, экспертный', conversational:'Разговорный, живой, как с коллегой', coaching:'Коучинговый, развивающий, с вопросами' };
+    const formatMap = { table:'Таблица', checklist:'Чек-лист', text:'Текст / абзацы', story:'Сценарий / нарратив' };
+
+    let out = `Роль: ты — senior learning analyst и performance consultant.\nТон: ${toneMap[tone] || tone}.\n\n`;
+    out += prompt.prompt + '\n';
+    if (aud) out += `\nАудитория: ${aud}.`;
+    if (ctx) out += `\nКонтекст: ${ctx}.`;
+    out += `\n\nФормат вывода: ${formatMap[format] || format}.\nТемпература: ${temp}.`;
+
+    document.getElementById('resultBox').value = out;
+  }
+
+  document.getElementById('buildBtn').addEventListener('click', buildPrompt);
+
+  document.getElementById('copyBtn').addEventListener('click', async function(){
+    const txt = document.getElementById('resultBox').value;
+    if (!txt) return;
+    try {
+      await navigator.clipboard.writeText(txt);
+      const orig = this.textContent;
+      this.textContent = 'Скопировано ✓';
+      setTimeout(() => this.textContent = orig, 1500);
+    } catch {}
   });
-  document.getElementById('copyBtn')?.addEventListener('click', async function(){
-    const txt = document.getElementById('result').value;
-    try { await navigator.clipboard.writeText(txt); this.textContent = 'Скопировано'; setTimeout(()=> this.textContent='Скопировать', 1200); } catch { /* ignore */ }
+
+  document.getElementById('clearBtn').addEventListener('click', () => {
+    document.getElementById('audInput').value = '';
+    document.getElementById('ctxInput').value = '';
+    document.getElementById('resultBox').value = '';
   });
+
+  document.getElementById('taskSelect').addEventListener('change', function(){
+    document.getElementById('resultBox').value = '';
+  });
+
+  populateTaskSelect();
   </script>
 </body>
 </html>
