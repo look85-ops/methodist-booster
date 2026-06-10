@@ -151,6 +151,7 @@ Job-to-be-done: ${answers[2]}
 MVP: ${answers[5]}
 Критерий успеха: ${answers[6]}`;
     try {
+        // GitHub Pages: серверных функций нет; если понадобится — вынести в отдельный сервис
         const response = await fetch('/.netlify/functions/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

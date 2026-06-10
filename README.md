@@ -27,8 +27,8 @@
 ### GitHub Pages (текущий)
 Публикуется как часть `NAAssistant` репозитория. Путь: https://look85-ops.github.io/NAAssistant/methodist-booster/
 
-### Netlify (если лимиты вернутся)
-Отдельный Netlify-сайт с AI-функциями (см. `netlify.toml` и `netlify/functions/chat.js`). Потребуется `OPENROUTER_KEY` в переменных окружения.
+### Примечание
+Исторически рассматривался Netlify для AI-функций, но сейчас деплой только на GitHub Pages.
 
 ## Проверка после деплоя
 - Все 6 вкладок переключаются

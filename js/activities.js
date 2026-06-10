@@ -135,6 +135,7 @@ async function generateActivityAI() {
     const { system, user } = buildActivityPrompt();
 
     try {
+        // GitHub Pages: серверных функций нет; если понадобится — вынести в отдельный сервис
         const response = await fetch('/.netlify/functions/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
