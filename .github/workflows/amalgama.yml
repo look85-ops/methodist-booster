@@ -1,0 +1,42 @@
+name: amalgama evolve
+
+on:
+  schedule:
+    - cron: "0 */12 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  evolve:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: pip install -r amalgama/requirements.txt
+
+      - name: Run curator
+        env:
+          EITHER_API_KEY: ${{ secrets.EITHER_API_KEY }}
+          FREE_API_KEYS: ${{ secrets.FREE_API_KEYS }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python amalgama/src/curator.py
+
+      - name: Commit new cycle
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: |
+          git config user.name "amalgama-bot"
+          git config user.email "amalgama-bot@users.noreply.github.com"
+          git add amalgama/index.html amalgama/state.json amalgama/chronicles/ amalgama/about.html
+          git diff --staged --quiet || git commit -m "amalgama: new cycle $(date -u +'%Y-%m-%d %H:%M')"
+          git push

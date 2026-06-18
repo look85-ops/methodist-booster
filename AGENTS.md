@@ -109,6 +109,7 @@
 │   ├── market/           # Аналитика рынка вакансий
 │   ├── resume/           # Версии резюме
 │   └── posts/            # Черновики постов для LinkedIn
+├── amalgama/              # Амальгамма — саморазвивающаяся AI-цивилизация (отдельный репозиторий look85-ops/amalgamma, GitHub Pages, цикл 12h) — локальная копия
 ├── garden/               # Digital Garden (локальная копия)
 ├── knowledge/            # Живая база знаний (правила, удачные решения)
 ├── logs/
@@ -369,11 +370,12 @@
 
 ## Critical Assets (main — всегда зелёный)
 
-Четыре артефакта должны быть всегда в рабочем состоянии на main:
+Пять артефактов должны быть всегда в рабочем состоянии на main:
 1. **portfolio/** — сайт-визитка (GitHub Pages, главная index.html) — находится в NAAssistant репозитории
 2. **methodist-booster/** — инструмент методиста (GitHub Pages, путь /methodist-booster/) — этот репозиторий, файлы в корне
 3. **portfolio/message-accidental_1.html** — «послание случайно» — *в NAAssistant*
 4. **garden/** — Digital Garden (отдельный репозиторий `look85-ops/digital-garden`, GitHub Pages https://look85-ops.github.io/digital-garden/) — *локальная копия*
+5. **amalgama/** — Амальгамма, саморазвивающаяся AI-цивилизация (GitHub Actions, цикл 12ч)
 
 Правила:
 - Перед коммитом в main проверь, что эти файлы не сломаны (smoke-тест: открыть в браузере или `webapp-test`)
