@@ -9,6 +9,9 @@ __pycache__/
 API.txt
 DGAPIFREE.txt
 
+# Nested repos
+amalgama/
+
 # IDE
 .vscode/
 .idea/
