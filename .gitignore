@@ -13,6 +13,9 @@ DGAPIFREE.txt
 amalgama/
 NAAssistant/
 cucpo_app/
+garden/
+temp_space/
+_hf_push_*/
 
 # IDE
 .vscode/
