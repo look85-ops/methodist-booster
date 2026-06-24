@@ -11,6 +11,8 @@ DGAPIFREE.txt
 
 # Nested repos
 amalgama/
+NAAssistant/
+cucpo_app/
 
 # IDE
 .vscode/
